@@ -5,11 +5,12 @@ import java.util.ArrayList;
 public class MessageController {
     private ArrayList<Integer> cacheData = new ArrayList<>();
 
-    public void fetch(boolean fromCache){
+    public ArrayList<Integer> fetch(boolean fromCache){
         if (fromCache){
 
         }else {
 
         }
+        return null;
     }
 }

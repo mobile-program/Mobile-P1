@@ -4,12 +4,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements NotificationCenter.NotificationListener{
 
     private LinearLayout linearLayout;
+    private MessageController messageController = new MessageController();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,11 +44,11 @@ public class MainActivity extends AppCompatActivity implements NotificationCente
     }
 
     private void onGetClicked() {
-
+        messageController.fetch(false);
     }
 
     private void onRefreshClicked() {
-
+        messageController.fetch(true);
     }
 
     @Override
@@ -57,6 +59,11 @@ public class MainActivity extends AppCompatActivity implements NotificationCente
 
     @Override
     public void onDataReceived(ArrayList<Integer> data) {
-
+        onClearClicked();
+        for (Integer i:data) {
+            TextView textView = new TextView(this);
+            textView.setText(String.valueOf(i));
+            linearLayout.addView(textView);
+        }
     }
 }
