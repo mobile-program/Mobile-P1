@@ -5,12 +5,13 @@ import java.util.ArrayList;
 public class MessageController {
     private ArrayList<Integer> cacheData = new ArrayList<>();
 
-    public ArrayList<Integer> fetch(boolean fromCache){
+    public void fetch(boolean fromCache){
+        ArrayList<Integer> data = new ArrayList<>();
         if (fromCache){
 
         }else {
 
         }
-        return null;
+        NotificationCenter.announce(data);
     }
 }

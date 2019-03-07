@@ -22,7 +22,7 @@ public class NotificationCenter {
         }
     }
 
-    public void announce(ArrayList<Integer> data){
+    public static void announce(ArrayList<Integer> data){
         for (NotificationListener listener:registeredList) {
             listener.onDataReceived(data);
         }
