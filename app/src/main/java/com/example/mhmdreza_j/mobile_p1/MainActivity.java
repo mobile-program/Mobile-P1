@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.ArrayList;
+
+public class MainActivity extends AppCompatActivity implements NotificationCenter.NotificationListener{
 
     private LinearLayout linearLayout;
 
@@ -32,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
                onClearClicked();
             }
         });
+        NotificationCenter.register(this, NotificationCenter.DATA_LOADED);
     }
 
     private void onClearClicked() {
@@ -43,6 +46,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void onRefreshClicked() {
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        NotificationCenter.unregister(this, NotificationCenter.DATA_LOADED);
+    }
+
+    @Override
+    public void onDataReceived(ArrayList<Integer> data) {
 
     }
 }
